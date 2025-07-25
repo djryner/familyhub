@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meal Plan</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f8f8; }
+    h1 { text-align: center; }
+    .grid { display: flex; flex-wrap: wrap; justify-content: center; }
+    .card { background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 10px; margin: 5px; width: 150px; text-align: center; }
+    .today { background: #cfe9ff; }
+  </style>
+</head>
+<body>
+  <h1>Meal Plan</h1>
+  <div class="grid">
+  {% for entry in meal_plan %}
+    <div class="card {% if entry.today %}today{% endif %}">
+      <div>{{ entry.date.strftime('%A') }}</div>
+      <div>{{ entry.date.strftime('%b %d') }}</div>
+      <div>{{ entry.meal }}</div>
+    </div>
+  {% endfor %}
+  </div>
+</body>
+</html>
